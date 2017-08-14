@@ -37,4 +37,22 @@ class Category extends Model
             ->order($order)
             ->select();
     }
+    public function getFirstCategorys($parentId = 0)
+    {
+        $data = [
+            'parent_id' => $parentId,
+            'status' => ['neq', -1],
+        ];
+        $order = [
+            'listorder' => 'desc',
+            'id' => 'desc',
+        ];
+        $result =  $this->where($data)
+            ->order($order)
+            ->paginate();//使用tp5分页 默认config.php 15
+            //->select();
+        //调试
+        //echo $this->getLastSql();
+        return $result;
+    }
 }

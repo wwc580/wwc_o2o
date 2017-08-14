@@ -14,7 +14,8 @@ class Category extends Validate
      * 场景设置
      */
     protected $scene = [
-        'add' => ['name', 'parent_id'],//添加
+        'add' => ['name', 'parent_id', 'id'],//添加 有这个字段值才会校验
         'listorder' => ['id', 'listorder'],//排序
+        'status' => ['id', 'status'],//修改状态
     ];
 }
