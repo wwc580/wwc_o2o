@@ -18,6 +18,8 @@ class Index extends Controller
     }
     public function welcome()
     {
+        /*\phpmailer\Email::send('1499592453@qq.com', '测试一下', '没有正文');
+        return '发送成功';*/
         return "欢迎来到主后台首页";
     }
 }
