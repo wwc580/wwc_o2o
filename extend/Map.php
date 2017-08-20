@@ -7,6 +7,7 @@ class Map
     /**
      * 根据地址获取经纬度
      * @param $address
+     * @return array
      */
     public static function getLngLat($address)
     {
@@ -25,7 +26,12 @@ class Map
         //1. file_get_contents($url);
         //2 curl
         $result = doCurl($url);
-        return $result;
+        if($result) {
+            //返回数组
+            return json_decode($result, true);
+        }else {
+            return [];
+        }
     }
 
     /**
