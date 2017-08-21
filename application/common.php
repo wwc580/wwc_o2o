@@ -23,6 +23,15 @@ function status($status)
     return $str;
 }
 
+function is_main($is_main){
+    if($is_main == 1) {
+        $str = "<span class='label label-success radius'>是</span>";
+    }else if($is_main == 0) {
+        $str = "<span class='label label-danger radius'>否</span>";
+    }
+    return $str;
+}
+
 /**
  * @param $url
  * @param int $type 0 get 1 post
