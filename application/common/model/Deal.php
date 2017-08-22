@@ -18,4 +18,16 @@ class Deal extends BaseModel
             ->paginate(1);
         return $result;
     }
+    public function getNormalDeals($data = [])
+    {
+        $data['status'] = 0;
+        $order = [
+            'id' => 'desc',
+        ];
+        $result = $this->where($data)
+            ->order($order)
+            ->paginate(1);
+        //echo $this->getLastSql();
+        return $result;
+    }
 }
