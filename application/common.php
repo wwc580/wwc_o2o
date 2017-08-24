@@ -102,7 +102,6 @@ function getSeCityName($path)
     }else {
         $cityId = $path;
     }
-
     $city = model('City')->get($cityId);
     return $city->name;
 }
@@ -121,4 +120,13 @@ function getSeCategory($path)
 
     $category = model('Category')->get($categoryId);
     return $category->name;
+}
+function countLocation($ids)
+{
+    if(preg_match('/,/', $ids)) {
+        $arr = explode(',', $ids);
+        return count($arr);
+    }else {
+       return 1;
+    }
 }

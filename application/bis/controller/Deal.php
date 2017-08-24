@@ -41,6 +41,7 @@ class Deal extends Base
                 'se_category_id' => empty($data['se_category_id']) ? '' : implode(',', $data['se_category_id']),
                 'category_id' => $data['category_id'],
                 'city_id' => $data['city_id'],
+                'se_city_id' => $data['se_city_id'],
                 'bis_account_id' => $this->getLoginUser()->id,
                 'xpoint' => $location->xpoint,
                 'ypoint' => $location->ypoint,
