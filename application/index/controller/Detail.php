@@ -44,6 +44,7 @@ class Detail extends Base
             'locations' => $locations,
             'overplus' => $deal->total_count - $deal->buy_count,
             'flag' => $flag,
+            'mapstr' => $locations[0]['xpoint'] .','. $locations[0]['ypoint'],
         ]);
     }
 }

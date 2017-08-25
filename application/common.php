@@ -83,7 +83,9 @@ function pagination($obj)
     if(!$obj) {
         return '';
     }
-    return '<div class="cl pd-5 bg-1 bk-gray mt-20 tp5-o2o">'.$obj->render(). '</div>';
+    //传参数 获取url参数
+    $params = request()->param();
+    return '<div class="cl pd-5 bg-1 bk-gray mt-20 tp5-o2o">'.$obj->appends($params)->render(). '</div>';
 }
 
 /**
