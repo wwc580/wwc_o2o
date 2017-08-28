@@ -6,6 +6,7 @@ class Index extends Base
     public function index()
     {
         //获取首页大图相关数据
+        $features = model('Featured')->getNormalFeaturedByType(0);
         //获取右侧广告位相关数据
 
         //商品分类 数据-美食 推荐
@@ -15,6 +16,7 @@ class Index extends Base
         return $this->fetch('', [
             'datas' => $datas,
             'meishicates' => $meishicates,
+            'features' => $features,
         ]);
     }
 }

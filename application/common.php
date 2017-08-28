@@ -23,6 +23,18 @@ function status($status)
     return $str;
 }
 
+function pay_status($pay_status)
+{
+    if($pay_status == 1) {
+        $str = "<span style='color:green'>已支付</span>";
+    }else if($pay_status == 0) {
+        $str = "<span style='color:orange'>未支付</span>";
+    }else {
+        $str = "<span style='color:orange'>支付失败</span>";
+    }
+    return $str;
+}
+
 function is_main($is_main){
     if($is_main == 1) {
         $str = "<span class='label label-success radius'>是</span>";
@@ -85,7 +97,7 @@ function pagination($obj)
     }
     //传参数 获取url参数
     $params = request()->param();
-    return '<div class="cl pd-5 bg-1 bk-gray mt-20 tp5-o2o">'.$obj->appends($params)->render(). '</div>';
+    return '<div align="center" class="cl pd-5 bg-1 bk-gray mt-20 tp5-o2o">'.$obj->appends($params)->render(). '</div>';
 }
 
 /**
@@ -130,5 +142,35 @@ function countLocation($ids)
         return count($arr);
     }else {
        return 1;
+    }
+}
+//设置订单号
+function setOrderSn()
+{
+    /*list($t1, $t2) = explode(' ', microtime());//microtime — 返回当前 Unix 时间戳和微秒数
+    $t3 = explode('.', $t1*10000);
+    return $t2.$t3[0].(mt_rand(10000, 99999));*/
+    return  date("YmdHis").(mt_rand(10000, 99999));
+}
+
+function getDealImageByDealId($dealId)
+{
+    $deal = model('Deal')->get(['id' => $dealId]);
+    if($deal && $deal->status == 1) {
+        return $deal->image;
+    }
+}
+function getDealNameByDealId($dealId)
+{
+    $deal = model('Deal')->get(['id' => $dealId]);
+    if($deal && $deal->status == 1) {
+        return $deal->name;
+    }
+}
+function getDealPriceByDealId($dealId)
+{
+    $deal = model('Deal')->get(['id' => $dealId]);
+    if($deal && $deal->status == 1) {
+        return $deal->current_price;
     }
 }

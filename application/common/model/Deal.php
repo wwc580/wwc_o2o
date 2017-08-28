@@ -85,4 +85,8 @@ class Deal extends BaseModel
         //echo $this->getLastSql();
         return $result;
     }
+    public function updateBuyCountById($id, $buyCount)
+    {
+        return $this->where(['id' => $id])->setInc('buy_count', $buyCount);//自增
+    }
 }

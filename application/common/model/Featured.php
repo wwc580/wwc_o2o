@@ -19,4 +19,12 @@ class Featured extends BaseModel
             ->paginate(1);
         return $result;
     }
+    public function getNormalFeaturedByType($type)
+    {
+        $data = [
+            'status' => 1,
+            'type' => $type,
+        ];
+        return $this->where($data)->select();
+    }
 }

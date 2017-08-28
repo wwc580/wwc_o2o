@@ -34,6 +34,7 @@
             {if $user}
             <li>欢迎您：{$user->username}</li>
             <li><a href="{:url('user/logout')}">退出</a></li>
+            <li><a target="_blank" href="{:url('orderlist/index')}">我的订单</a></li>
             {else/}
             <li><a href="{:url('user/register')}">注册</a></li>
             <li>|</li>
