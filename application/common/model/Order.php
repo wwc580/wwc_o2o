@@ -48,4 +48,13 @@ class Order extends Model
             ->paginate();
         return $res;
     }
+    public function getOrderCountByUsername($username)
+    {
+        $data = [
+            'username' => $username,
+            'status' => 1,
+        ];
+        $res = $this->where($data)->count();
+        return $res;
+    }
 }

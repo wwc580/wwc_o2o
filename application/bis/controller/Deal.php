@@ -8,7 +8,8 @@ class Deal extends Base
 {
     public function index()
     {
-        $deal = model('Deal')->getDealByStatus(['in', '0,1']);
+        $bisId = $this->getLoginUser()->bis_id;
+        $deal = model('Deal')->getDealByBisId($bisId);
         return $this->fetch('', [
             'deal' => $deal,
         ]);

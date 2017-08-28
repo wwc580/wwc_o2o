@@ -31,7 +31,7 @@ class Base extends Controller
                 break;//终止foreach
             }
         }
-        $defaultuname = $defaultuname ? $defaultuname : 'nanchang';
+        $defaultuname = $defaultuname ? $defaultuname : 'nanjing';
         if(session('cityuname', '', 'o2o') && !input('get.city')) {
             $cityuname = session('cityuname', '', 'o2o');
         }else {

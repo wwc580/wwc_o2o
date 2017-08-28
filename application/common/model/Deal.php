@@ -5,13 +5,14 @@ use think\Model;
 
 class Deal extends BaseModel
 {
-    public function getDealByStatus($status=0)
+    public function getDealByBisId($bisId)
     {
         $order = [
             'id' => 'desc',
         ];
         $data = [
-            'status' => $status,
+            'status' => ['in', '0,1'],
+            'bis_id' => $bisId,
         ];
         $result = $this->where($data)
             ->order($order)
@@ -20,13 +21,13 @@ class Deal extends BaseModel
     }
     public function getNormalDeals($data = [])
     {
-        $data['status'] = 0;
+        $data['status'] = ['in', '0,1'];
         $order = [
             'id' => 'desc',
         ];
         $result = $this->where($data)
             ->order($order)
-            ->paginate(1);
+            ->paginate(5);
         //echo $this->getLastSql();
         return $result;
     }
@@ -81,7 +82,7 @@ class Deal extends BaseModel
         $datas[] = 'status=1';
         $result = $this->where(implode(' AND ', $datas))
             ->order($order)
-            ->paginate(1);
+            ->paginate(2);
         //echo $this->getLastSql();
         return $result;
     }

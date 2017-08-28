@@ -7,10 +7,12 @@ class Orderlist extends Base
     {
         $user = $this->getLoginUser()->username;
         $order = model('Order')->getOrderByUsername($user);
+        $orderCount = model('Order')->getOrderCountByUsername($user);
         return $this->fetch('',[
             'controller' => 'lists',
             'title' => '我的订单',
             'order' => $order,
+            'orderCount' => $orderCount,
         ]);
     }
 }

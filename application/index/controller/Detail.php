@@ -17,7 +17,6 @@ class Detail extends Base
         $category = model('Category')->get($deal->category_id);
         //获取分店信息
         $locations = model('BisLocation')->getNormalLocationsInId($deal->location_ids);
-
         $flag = 0;
         if($deal->start_time > time()) {
             $flag = 1;

@@ -10,13 +10,14 @@ class BisLocation extends BaseModel
      * @param int $status
      * @return \think\Paginator
      */
-    public function getBisLocationByStatus($status=0)
+    public function getBisLocationByBisId($bisId)
     {
         $order = [
             'id' => 'desc',
         ];
         $data = [
-            'status' => $status,
+            'status' => ['in', '0,1'],
+            'bis_id' => $bisId,
         ];
         $result = $this->where($data)
             ->order($order)

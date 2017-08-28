@@ -13,7 +13,8 @@ class Location extends Base
      */
     public function index()
     {
-        $location = model('BisLocation')->getBisLocationByStatus(['in', '0,1']);
+        $bisId = $this->getLoginUser()->bis_id;
+        $location = model('BisLocation')->getBisLocationByBisId($bisId);
         return $this->fetch('',[
             'location' => $location,
         ]);
